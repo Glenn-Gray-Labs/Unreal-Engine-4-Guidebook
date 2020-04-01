@@ -11,6 +11,8 @@ If you don't find the article you want on the site, you may be able to find it u
 * [https://web.archive.org/web/20200329185200/https://wiki.unrealengine.com/index.php?title=Main\_Page](https://web.archive.org/web/20200329185200/https://wiki.unrealengine.com/index.php?title=Main_Page)
 * [https://web.archive.org/web/\*/https://wiki.unrealengine.com/\*](https://web.archive.org/web/*/https://wiki.unrealengine.com/*)
 
+> **Note:** We are currently in the process of downloading an automated archive from Wayback Machine and intend to release a `.zip` file with the contents as soon as possible. Check back here for more updates.
+
 ## I want to contribute, how can I help?
 
 1. [Fork the repository for this site on Github](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide).
