@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [Wiki Archives](wiki-archives/README.md)
-  * [Common Pitfalls](wiki-archives/common-pitfalls/README.md)
+  * [Debugging](wiki-archives/common-pitfalls/README.md)
     * [How To Prevent Crashes Due To Dangling Actor Pointers](wiki-archives/common-pitfalls/how-to-prevent-crashes-due-to-dangling-actor-pointers.md)
   * [Macros & Data Types](wiki-archives/macros-and-data-types/README.md)
     * [Enums For Both C++ and BP](wiki-archives/macros-and-data-types/enums-for-both-c++-and-bp.md)
