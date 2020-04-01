@@ -6,8 +6,6 @@ description: >-
 
 # Interfaces in C++
 
-> This article is still in the process of being cleaned up, but it has been captured for preservation.
-
 ## Overview
 
 Here's a tutorial on using **UE4 C++ Interfaces in 4.11+**
