@@ -1,16 +1,12 @@
+---
+description: >-
+  This legacy wiki article was originally written by Rama and received
+  contributions from HuntaKiller, DarkGaze, and Ruhrpottpatiot.
+---
+
 # Interfaces in C++
 
-> This article is still in the process of being cleaned up, but it has been captured for preservation.
-
 ## Overview
-
-Original Author Rama
-
-Updated & Expanded for 4.11 [HuntaKiller](https://web.archive.org/web/20181002150134/https://wiki.unrealengine.com/index.php?title=User:HuntaKiller&action=edit&redlink=1) Thank you for all that you contribute to the community Rama!
-
-[Rama](https://web.archive.org/web/20181002150134/https://wiki.unrealengine.com/index.php?title=User:Rama) : You're welcome and thank you for this lovely addition!
-
-Dear Community,
 
 Here's a tutorial on using **UE4 C++ Interfaces in 4.11+**
 
@@ -38,39 +34,48 @@ When following this tutorial and creating your interface, you'd replace ReactToH
 
 #### ReactsToTimeOfDay.h
 
-// Copyright 1998-2013 Epic Games, Inc. All Rights Reserved.
+```cpp
+#pragma once
 
-1. pragma once
-2. include "ReactsToTimeOfDay.generated.h"
+#include "ReactsToTimeOfDay.generated.h"
 
-/\* must have BlueprintType as a specifier to have this interface exposed to blueprints
+/**
+ * Must have BlueprintType as a specifier to have this interface exposed to blueprints.
+ * With this line you can easily add this interface to any blueprint class.
+ */
+UINTERFACE(BlueprintType)
+class MYPROJECT_API UReactsToTimeOfDay : public UInterface {
+  GENERATED_UINTERFACE_BODY()
+};
 
-```text
-  with this line you can easily add this interface to any blueprint class */
+class MYPROJECT_API IReactsToTimeOfDay {
+  GENERATED_IINTERFACE_BODY()
+
+public:
+
+  // classes using this interface must implement ReactToHighNoon
+  UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MyCategory")
+  bool ReactToHighNoon();
+
+  //classes using this interface may implement ReactToMidnight
+  UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "MyCategory")
+  bool ReactToMidnight();
+
+};
 ```
 
-UINTERFACE\(BlueprintType\) class MYPROJECT\_API UReactsToTimeOfDay : public UInterface { GENERATED\_UINTERFACE\_BODY\(\) };
-
-class MYPROJECT\_API IReactsToTimeOfDay { GENERATED\_IINTERFACE\_BODY\(\)
-
-public: //classes using this interface must implement ReactToHighNoon UFUNCTION\(BlueprintNativeEvent, BlueprintCallable, Category = "MyCategory"\) bool ReactToHighNoon\(\);
-
- //classes using this interface may implement ReactToMidnight UFUNCTION\(BlueprintImplementableEvent, BlueprintCallable, Category = "MyCategory"\) bool ReactToMidnight\(\);
-
-};&lt;/syntaxhighlight&gt;
-
-Note checked for 4.18: GENERATED\_UINTERFACE\_BODY\(\) and GENERATED\_IINTERFACE\_BODY\(\), can be now changed to GENERATED\_BODY\(\), which is an updated version of those two that works for structs, etc, but errors could be a little confusing if you get compile errors since there's no way to differentiate. You could create an automatic interface to see how it looks now using Create C++ Class context menu on the content editor and choosing Interface type.
+> **Note checked for 4.18+:** `GENERATED_UINTERFACE_BODY()` and `GENERATED_IINTERFACE_BODY()`, can be now changed to `GENERATED_BODY()`, which is an updated version of those two that works for structs, etc, but errors could be a little confusing if you get compile errors since there's no way to differentiate. You could create an automatic interface to see how it looks now using Create C++ Class context menu on the content editor and choosing Interface type.
 
 #### ReactsToTimeOfDay.cpp
 
-&lt;syntaxhighlight lang="cpp"&gt;// Copyright 1998-2013 Epic Games, Inc. All Rights Reserved.
+```cpp
+#include "MyProject.h"
+#include "ReactsToTimeOfDay.h"
 
-1. include "MyProject.h"
-2. include "ReactsToTimeOfDay.h"
-
-UReactsToTimeOfDay::UReactsToTimeOfDay\(const class FObjectInitializer& ObjectInitializer\) : Super\(ObjectInitializer\) {
-
-} &lt;/syntaxhighlight&gt;
+UReactsToTimeOfDay::UReactsToTimeOfDay(const class FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+  // add your code here
+}
+```
 
 ### Using An Interface With C++ Classes
 
@@ -80,82 +85,101 @@ The first inherited class will be the base class of your actor, anything you wan
 
 #### Flower.h
 
-&lt;syntaxhighlight lang="cpp"&gt; //..other includes may appear here depending on your class
+```cpp
+#include "ReactsToTimeOfDay.h"
+#include "ASkeletalMeshActor.generated.h"
 
-1. include "ReactsToTimeOfDay.h"
-2. include "ASkeletalMeshActor.generated.h"
+// ...other includes may appear here depending on your class
 
-UCLASS\(\) class AFlower : public ASkeletalMeshActor, public IReactsToTimeOfDay { GENERATED\_BODY\(\)
+UCLASS()
+class AFlower : public ASkeletalMeshActor, public IReactsToTimeOfDay {
+  GENERATED_BODY()
 
-public: /\* ... other AFlower properties and functions declared ... \*/
+public:
 
- UFUNCTION\(BlueprintCallable, BlueprintNativeEvent, Category = "MyCategory"\) bool ReactToHighNoon\(\); virtual bool ReactToHighNoon\_Implementation\(\) override;
+  /* ... other AFlower properties and functions declared ... */
 
-  
- };&lt;/syntaxhighlight&gt;
+  UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "MyCategory")
+  bool ReactToHighNoon(); virtual bool ReactToHighNoon_Implementation() override;
 
-virtual bool ReactToHighNoon\_Implementation\(\) override; This line tells your class that it has a function of this name and signature to inherit from the interface, which is how calls to the interface functions are able to interact with this class.
+};
+```
 
-UFUNCTION\(BlueprintCallable, BlueprintNativeEvent, Category = "MyCategory"\) bool ReactToHighNoon\(\); This tells your class that you can both call and override this function in blueprints. You need this part as well if you want to be able to override C++ functionality within BP, as BlueprintNativeEvents are intended to be used.
+`virtual bool ReactToHighNoon_Implementation() override;`
 
-Notice that ReactToMidnight\(\), the BlueprintImplementableEvent, is not defined here. A BlueprintImplementableEvent is declared \(its existance\) in our interface, but defined \(its behaviour\) in blueprints only.
+This line tells your class that it has a function of this name and signature to inherit from the interface, which is how calls to the interface functions are able to interact with this class.
+
+`UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "MyCategory") bool ReactToHighNoon();` 
+
+This tells your class that you can both call and override this function in blueprints. You need this part as well if you want to be able to override C++ functionality within BP, as BlueprintNativeEvents are intended to be used.
+
+Notice that `ReactToMidnight()`, the BlueprintImplementableEvent, is not defined here. A BlueprintImplementableEvent is declared \(its existance\) in our interface, but defined \(its behaviour\) in blueprints only.
 
 #### Flower.cpp
 
-&lt;syntaxhighlight lang="cpp"&gt; //other flower.cpp code
+```cpp
+// other flower.cpp code
 
-bool AFlower::ReactToHighNoon\_Implementation\(\) { //Default behaviour for how flower would react at noon //OpenPetals\(\); //AcceptBugs\(\); //...
-
+bool AFlower::ReactToHighNoon_Implementation() {
+ // Default behaviour for how flower would react at noon //OpenPetals(); //AcceptBugs(); //...
  return true;
-
-} &lt;/syntaxhighlight&gt;
+} 
+```
 
 Any number of classes and subclasses can implement this interface using this format
 
 #### Frog.h
 
-&lt;syntaxhighlight lang="cpp"&gt; //..other includes may appear here depending on your class
+```cpp
+#include "ReactsToTimeOfDay.h"
+#include "AFrog.generated.h"
 
-1. include "ReactsToTimeOfDay.h"
-2. include "AFrog.generated.h"
+UCLASS()
+class AFrog : public ACharacter, public IReactsToTimeOfDay {
+  GENERATED_BODY()
+  
+  /* ... other AFrog properties and functions declared ... */
 
-UCLASS\(\) class AFrog : public ACharacter, public IReactsToTimeOfDay { GENERATED\_BODY\(\) /\* ... other AFrog properties and functions declared ... \*/
-
- UFUNCTION\(BlueprintCallable, BlueprintNativeEvent, Category = "MyCategory"\) bool ReactToHighNoon\(\); virtual bool ReactToHighNoon\_Implementation\(\) override;
-
-};&lt;/syntaxhighlight&gt;
+  UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "MyCategory")
+  bool ReactToHighNoon(); virtual bool ReactToHighNoon_Implementation() override;
+  
+};
+```
 
 #### Frog.cpp
 
-&lt;syntaxhighlight lang="cpp"&gt; //other Frog code
+```cpp
+// other Frog code
 
-bool AFrog::ReactToHighNoon\_Implementation\(\) { //Default behaviour for how a frog would react at noon //GoSwim\(\); //...
-
- return true; }
-
-&lt;/syntaxhighlight&gt;
+bool AFrog::ReactToHighNoon_Implementation() {
+  // Default behaviour for how a frog would react at noon //GoSwim(); //...
+  return true;
+}
+```
 
 #### Determining If a Given Actor Has The Interface
 
 To determine if an actor implements an interface in C++, simply cast your class to the interface, if it returns NULL then the object is not using it. If it is successful, you can use that pointer cast to the interface to call your function, which will execute from the proper class.
 
-&lt;syntaxhighlight lang="cpp"&gt; //Example: somewhere else in code we are trying to see if our object reacts to time of day
+```cpp
+// Example: somewhere else in code we are trying to see if our object reacts to time of day
+// Some pointer is defined to any class inheriting from UObject UObject* pointerToAnyUObject;
 
-//Some pointer is defined to any class inheriting from UObject UObject\* pointerToAnyUObject;
+IReactsToTimeOfDay* TheInterface = Cast<IReactsToTimeOfDay>(pointerToAnyUObject);
+if (TheInterface) {
+  // Don't call your functions directly, use the 'Execute_' prefix //the Execute_ReactToHighNoon
+  // and Execute_ReactToMidnight are generated on compile //you may need to compile before these
+  // functions will appear TheInterface->Execute_ReactToHighNoon (pointerToAnyUObject);
+  TheInterface->Execute_ReactToMidnight (pointerToAnyUObject);
+}
 
-//....
+//end of code segment
+```
 
-  
- IReactsToTimeOfDay\* TheInterface = Cast&lt;IReactsToTimeOfDay&gt;\(pointerToAnyUObject\); if \(TheInterface\) { //Don't call your functions directly, use the 'Execute\_' prefix //the Execute\_ReactToHighNoon and Execute\_ReactToMidnight are generated on compile //you may need to compile before these functions will appear TheInterface-&gt;Execute\_ReactToHighNoon \(pointerToAnyUObject\); TheInterface-&gt;Execute\_ReactToMidnight \(pointerToAnyUObject\); }
-
-  
- //end of code segment&lt;/syntaxhighlight&gt;
-
-  
  **Critical To Note**
 
 *  Whenever calling your interface functions in C++, never call the direct functions, always use the one with the Execute\_ prefix
-*  Although it might seem, that you function must return a value to be properly implemented, this is not true. If your interface doesn't return a value UE4 treats it as an event. At first glance this might seem as an error, but this is not the case. You just have to create the implementation details in the event graph instead of overriding. You still can call the function normally via function, or interface call. --[Ruhrpottpatiot](https://web.archive.org/web/20181002150134/https://wiki.unrealengine.com/index.php?title=User:Ruhrpottpatiot&action=edit&redlink=1) \([talk](https://web.archive.org/web/20181002150134/https://wiki.unrealengine.com/index.php?title=User_talk:Ruhrpottpatiot&action=edit&redlink=1)\) 21:00, 27 December 2017 \(UTC\)
+*  Although it might seem, that you function must return a value to be properly implemented, this is not true. If your interface doesn't return a value UE4 treats it as an event. At first glance this might seem as an error, but this is not the case. You just have to create the implementation details in the event graph instead of overriding. You still can call the function normally via function, or interface call. --Ruhrpottpatiot
 *  To determine if an actor implements an interface in both C++ and Blueprints use
 
 ```cpp
@@ -190,8 +214,4 @@ Once this is all implemented, the classes that you have set up with the interfac
 You can trigger global events that only certain actors will respond to each actor can respond to an event in their own unique way. 
 
 While it's a little bit more complicated of a setup it helps keeping the code very simple and is much more performance friendly than casting to multiple different types of classes!
-
-Rama  
- HuntaKiller  
- Darkgaze
 
