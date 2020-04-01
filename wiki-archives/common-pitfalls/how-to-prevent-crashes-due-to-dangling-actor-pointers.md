@@ -1,3 +1,7 @@
+---
+description: This wiki article was written by Rama.
+---
+
 # How To Prevent Crashes Due To Dangling Actor Pointers
 
 While working on Abatron, an RTS/FPS hybrid game with tons of character units to keep track of, I created a lot of arrays of Actors:

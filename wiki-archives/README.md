@@ -6,12 +6,13 @@ This guide was created to capture a lot of the information from the now defunct 
 
 It would be shocking if Epic didn't wind up putting the Wiki back only, at least for a temporary amount of time. But in the event that they don't \(or if it takes them a while to do so\), we can do our best to retain and archive as much of the wiki on this site.
 
-If you don't find the article you want on the site, you may be able to find it using one of the links found below:
+### I can't find the article I'm looking for...
 
-* [https://web.archive.org/web/20200329185200/https://wiki.unrealengine.com/index.php?title=Main\_Page](https://web.archive.org/web/20200329185200/https://wiki.unrealengine.com/index.php?title=Main_Page)
-* [https://web.archive.org/web/\*/https://wiki.unrealengine.com/\*](https://web.archive.org/web/*/https://wiki.unrealengine.com/*)
+We've gone ahead and scoured the Wayback Machine in order to a create a `.zip` file with as much archival data as we could retrieve. This file is available for download on Dropbox using the following link:
 
-> **Note:** We are currently in the process of downloading an automated archive from Wayback Machine and intend to release a `.zip` file with the contents as soon as possible. Check back here for more updates.
+{% embed url="https://www.dropbox.com/s/g7plgzei399v342/wiki.unrealengine.com.zip?dl=0" %}
+
+If you can't find it in the `.zip` archive, changes are that it's lost for good until Epic or the original author reposts it somewhere else.
 
 ## I want to contribute, how can I help?
 
