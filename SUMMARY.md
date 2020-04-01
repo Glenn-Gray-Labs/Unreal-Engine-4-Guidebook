@@ -5,6 +5,7 @@
   * [Debugging](wiki-archives/common-pitfalls/README.md)
     * [How To Prevent Crashes Due To Dangling Actor Pointers](wiki-archives/common-pitfalls/how-to-prevent-crashes-due-to-dangling-actor-pointers.md)
   * [Macros & Data Types](wiki-archives/macros-and-data-types/README.md)
+    * [Structs, USTRUCTS\(\), They're Awesome](wiki-archives/macros-and-data-types/untitled.md)
     * [Enums For Both C++ and BP](wiki-archives/macros-and-data-types/enums-for-both-c++-and-bp.md)
     * [Delegates in UE4, Raw C++, and BP Exposed](wiki-archives/macros-and-data-types/delegates-in-ue4-raw-c++-and-bp-exposed.md)
     * [Interfaces in C++](wiki-archives/macros-and-data-types/interfaces-in-c++.md)
