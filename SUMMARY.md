@@ -9,6 +9,7 @@
     * [Delegates in UE4, Raw C++, and BP Exposed](wiki-archives/macros-and-data-types/delegates-in-ue4-raw-c++-and-bp-exposed.md)
     * [Interfaces in C++](wiki-archives/macros-and-data-types/interfaces-in-c++.md)
   * [Networking](wiki-archives/networking/README.md)
+    * [Standalone Dedicated Server](wiki-archives/networking/standalone-dedicated-server.md)
     * [How To Use Sessions In C++](wiki-archives/networking/how-to-use-sessions-in-c++.md)
     * [Spawn Different Pawns For Players in Multiplayer](wiki-archives/networking/spawn-different-pawns-for-players-in-multiplayer.md)
     * [Spawn Different Pawns For Every Player](wiki-archives/networking/spawn-different-pawns-for-every-player.md)
