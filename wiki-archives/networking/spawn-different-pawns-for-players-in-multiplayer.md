@@ -1,3 +1,7 @@
+---
+description: This wiki article was written by TheJamsh.
+---
+
 # Spawn Different Pawns For Players in Multiplayer
 
 ### Overview
@@ -188,6 +192,4 @@ I do NOT encourage the use of TextFiles to determine which pawn to use for a rea
 In due time, I will update this tutorial to do exactly that, as I believe it is much more suited to most projects. More advanced C++ users will be able to integrate this on their own from this point on however, so enjoy!
 
 Hope this helps!
-
-TheJamsh
 
