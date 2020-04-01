@@ -1,7 +1,7 @@
 ---
 description: >-
-  This legacy wiki article was originally written by Rama and received
-  contributions from HuntaKiller, DarkGaze, and Ruhrpottpatiot.
+  This wiki article was originally written by Rama and received contributions
+  from HuntaKiller, DarkGaze, and Ruhrpottpatiot.
 ---
 
 # Interfaces in C++
