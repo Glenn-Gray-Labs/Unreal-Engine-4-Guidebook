@@ -1,5 +1,5 @@
 ---
-description: This legacy wiki article was written by Rama.
+description: This wiki article was written by Rama.
 ---
 
 # Delegates in UE4, Raw C++, and BP Exposed
