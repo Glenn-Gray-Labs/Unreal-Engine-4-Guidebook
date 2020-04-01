@@ -6,6 +6,8 @@ This guide was created to capture a lot of the information from the now defunct 
 
 We can use all the help we can get! This book is powered by Github and changes can be tracked on the repository.
 
+> **Note:** We are currently downloading caches from Wayback Machine and will compile the result into a downloadable .zip archive soon. Stay tuned!
+
 ### I want to help archive an existing wiki article
 
 1. [Fill out this form](https://docs.google.com/forms/d/1ss_V-bzfXg0Fkjl6lfFgPyLmdRUsNmXUqdzC1rYSLjY) with your email and Github username.
