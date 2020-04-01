@@ -6,3 +6,5 @@ description: >-
 
 # The UPROPERTY Macro
 
+> This article is a work in progress, come back later.
+

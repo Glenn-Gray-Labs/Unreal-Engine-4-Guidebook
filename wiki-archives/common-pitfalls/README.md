@@ -1,2 +1,2 @@
-# Debugging & Utilities
+# Debugging
 
