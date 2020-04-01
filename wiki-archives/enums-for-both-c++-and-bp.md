@@ -1,5 +1,7 @@
 # Enums For Both C++ and BP
 
+> **Note:** This articular is still being formatted and is a work in progress.
+
 ## Overview
 
 Dear Community,
