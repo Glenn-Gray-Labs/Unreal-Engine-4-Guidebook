@@ -1,8 +1,13 @@
 # Table of contents
 
 * [Introduction](README.md)
+* [Quick Reference](quick-reference/README.md)
+  * [C++ Data Type Snippets](quick-reference/c++-data-type-snippets.md)
+  * [The UPROPERTY Macro](quick-reference/the-uproperty-macro.md)
+  * [The UFUNCTION Macro](quick-reference/the-ufunction-macro.md)
 * [Wiki Archives](wiki-archives/README.md)
-  * [Debugging](wiki-archives/common-pitfalls/README.md)
+  * [Debugging & Utilities](wiki-archives/common-pitfalls/README.md)
+    * [Exec Functions](wiki-archives/common-pitfalls/exec-functions.md)
     * [How To Prevent Crashes Due To Dangling Actor Pointers](wiki-archives/common-pitfalls/how-to-prevent-crashes-due-to-dangling-actor-pointers.md)
   * [Macros & Data Types](wiki-archives/macros-and-data-types/README.md)
     * [Structs, USTRUCTS\(\), They're Awesome](wiki-archives/macros-and-data-types/untitled.md)
