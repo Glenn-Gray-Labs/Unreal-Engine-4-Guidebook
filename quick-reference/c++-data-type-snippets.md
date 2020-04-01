@@ -9,15 +9,11 @@ description: >-
 
 ## Interfaces
 
-> For more information about interfaces in Unreal, [check out this wiki article](../wiki-archives/macros-and-data-types/interfaces-in-c++.md).
+For more information about interfaces in Unreal, [check out this wiki article](../wiki-archives/macros-and-data-types/interfaces-in-c++.md).
 
-You'll need to create or add the following code snippet to a header file. Be sure to replace `FILENAME` with the name of the file, replace `MYPROJECT_API` with your project's `_API` identifier, `Example` with the names of your interface/class, and replace the methods as necessary.
+* You need to define two classes: `U<Name>` and `I<Name>`. The second class is what your C++ code will extend to implement the interface.
 
 ```cpp
-#pragma once
-
-#include "FILENAME.generated.h"
-
 UINTERFACE(BlueprintType)
 class MYPROJECT_API UExample : public UInterface
 {
@@ -35,6 +31,29 @@ public:
 
   UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
   bool BlueprintEventExampleMethod();
+
+};
+```
+
+## Structs
+
+For more information about structs in Unreal, [check out this wiki article](../wiki-archives/macros-and-data-types/untitled.md).
+
+* To access your struct from Blueprint, make sure to add the `BlueprintType` keyword to the `USTRUCT` macro.
+* Structs must have a default constructor.
+* It's Unreal coding standard to prefix your structs with a capital `F`.
+* You cannot use the `UFUNCTION` macro with methods on structs.
+
+```cpp
+USTRUCT(BlueprintType)
+struct MYPROJECT_API FExample
+{
+    GENERATED_BODY()
+    
+public:
+
+    UPROPERTY(BlueprintReadOnly)
+    int32 SomeValue;
 
 };
 ```
