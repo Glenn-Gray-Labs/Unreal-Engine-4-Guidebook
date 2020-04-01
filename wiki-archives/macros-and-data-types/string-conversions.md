@@ -17,7 +17,7 @@ description: Guide on String conversions (from/to) by Rama the legend
 - [UE4 Source Header References](#ue4-source-header-references)
 - [Optimization Issues Concerning FNames](#optimization-issues-concerning-fnames)
 
-### Overview
+## Overview
 
 **Original Author: Rama**
 
@@ -37,7 +37,7 @@ your UE4 install directory  / Engine / Source
 ```
 you will probably want to do a search for them from this point :) 
 
-#### Converting FString to FNames
+### Converting FString to FNames
 
 Say we have
 ```cpp
@@ -48,7 +48,7 @@ To convert this to an FName you do:
 FName ConvertedFString = FName(*TheString);
 ```
 
-####  std::string to FString
+###  std::string to FString
 
 ```cpp
 #include <string>
@@ -57,7 +57,7 @@ std::string TestString = "Happy";
 FString HappyString(TestString.c_str());
 ```
 
-####  FString to std::string
+###  FString to std::string
 
 ```cpp
 #include <string>
@@ -69,9 +69,9 @@ You will find this particularly useful in cases other than float and int32!
 C++ std::String::to_string
 http://en.cppreference.com/w/cpp/string/basic_string/to_string
 
-###  FCString Overview
+##  FCString Overview
 
-#### Converting FString to Numbers
+### Converting FString to Numbers
 
 The * operator on FStrings returns their TCHAR* data which is what FCString functions use.
 If you cant find the function you want in FStrings (UnrealString.h) then you should check out the FCString functions (CString.h)
@@ -81,21 +81,21 @@ Say we have
 FString TheString = "123.021";
 ```
 
-####  FString to Integer
+###  FString to Integer
 
 (note Atoi is unsafe; no way to indicate errors)
 ```cpp
 int32 MyShinyNewInt = FCString::Atoi(*TheString);
 ```
 
-####  FString to Float
+###  FString to Float
 
 ```cpp
 float MyShinyNewFloat = FCString::Atof(*TheString);
 ```
 Note that Atoi and Atof are static functions, so you use the syntax FCString::TheFunction to call it :)
 
-###  Float/Integer to FString
+##  Float/Integer to FString
 
 ```cpp
 FString NewString = FString::FromInt(YourInt);
@@ -103,7 +103,7 @@ FString VeryCleanString = FString::SanitizeFloat(YourFloat);
 ```
 Static functions in the UnrealString.h :)
 
-###  UE4 Source Header References
+##  UE4 Source Header References
 
 ```cpp
 CString.h
@@ -118,7 +118,7 @@ Atod	(string to double precision float)
 For a great deal of helpful functions you will also want to look at
 UnrealString.h for direct manipulation of FStrings!
 
-###  Optimization Issues Concerning FNames
+##  Optimization Issues Concerning FNames
 
 FNames are inherently fast, but you could be forcing a hashmap lookup if you are accessing them in the wrong way. Look at the following code:
 ```cpp
