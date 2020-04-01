@@ -6,6 +6,7 @@
     * [How To Prevent Crashes Due To Dangling Actor Pointers](wiki-archives/common-pitfalls/how-to-prevent-crashes-due-to-dangling-actor-pointers.md)
   * [Macros & Data Types](wiki-archives/macros-and-data-types/README.md)
     * [Enums For Both C++ and BP](wiki-archives/macros-and-data-types/enums-for-both-c++-and-bp.md)
+    * [Delegates in UE4, Raw C++, and BP Exposed](wiki-archives/macros-and-data-types/delegates-in-ue4-raw-c++-and-bp-exposed.md)
     * [Interfaces in C++](wiki-archives/macros-and-data-types/interfaces-in-c++.md)
   * [Networking](wiki-archives/networking/README.md)
     * [How To Use Sessions In C++](wiki-archives/networking/how-to-use-sessions-in-c++.md)
