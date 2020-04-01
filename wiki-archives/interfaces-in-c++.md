@@ -158,17 +158,17 @@ To determine if an actor implements an interface in C++, simply cast your class 
 *  Although it might seem, that you function must return a value to be properly implemented, this is not true. If your interface doesn't return a value UE4 treats it as an event. At first glance this might seem as an error, but this is not the case. You just have to create the implementation details in the event graph instead of overriding. You still can call the function normally via function, or interface call. --[Ruhrpottpatiot](https://web.archive.org/web/20181002150134/https://wiki.unrealengine.com/index.php?title=User:Ruhrpottpatiot&action=edit&redlink=1) \([talk](https://web.archive.org/web/20181002150134/https://wiki.unrealengine.com/index.php?title=User_talk:Ruhrpottpatiot&action=edit&redlink=1)\) 21:00, 27 December 2017 \(UTC\)
 *  To determine if an actor implements an interface in both C++ and Blueprints use
 
-&lt;syntaxhighlight lang="cpp"&gt; if \(pointerToAnyUObject-&gt;GetClass\(\)-&gt;ImplementsInterface\(UReactsToTimeOfDay::StaticClass\(\)\)\)
-
-```text
-   IReactsToTimeOfDay::Execute_ReactToHighNoon(pointerToAnyUObject);
+```cpp
+if (pointerToAnyUObject->GetClass()->ImplementsInterface(UReactsToTimeOfDay::StaticClass())) {
+    IReactsToTimeOfDay::Execute_ReactToHighNoon(pointerToAnyUObject);
+}
 ```
-
-&lt;/syntaxhighlight&gt;
 
 #### The Magic Interfaces
 
-TheInterface-&gt;Execute\_ReactToHighNoon\(\)
+```cpp
+TheInterface->Execute_ReactToHighNoon();
+```
 
 From the above code you can see that the function is being called off of the interface, you never even need to know what type of object you're dealing with, just whether it supports the interface you need.
 
