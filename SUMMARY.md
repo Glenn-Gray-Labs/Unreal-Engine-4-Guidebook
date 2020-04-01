@@ -9,4 +9,5 @@
 * [How To Use Sessions In C++](wiki-archives/how-to-use-sessions-in-c++.md)
 * [How To Prevent Crashes Due To Dangling Actor Pointers](wiki-archives/how-to-prevent-crashes-due-to-dangling-actor-pointers.md)
 * [Interfaces in C++](wiki-archives/interfaces-in-c++.md)
+* [Enums For Both C++ and BP](wiki-archives/enums-for-both-c++-and-bp.md)
 
