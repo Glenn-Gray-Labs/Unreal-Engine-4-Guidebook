@@ -1,6 +1,6 @@
 # Enums For Both C++ and BP
 
-> **Note:** This articular is still being formatted and is a work in progress.
+> This article is still in the process of being cleaned up, but it has been captured for preservation.
 
 ## Overview
 
