@@ -16,7 +16,7 @@ Enums basically give you ability to define a series of related types with long h
 
 These could be AI states, object types, ammo types, weapon types, tree types, or anything really :\)
 
-[![Enumgraph.jpg](https://d3ar1piqh1oeli.cloudfront.net/e/e3/Enumgraph.jpg/800px-Enumgraph.jpg)](file:///index.php?title=File:Enumgraph.jpg)
+![Enumgraph.jpg](https://d3ar1piqh1oeli.cloudfront.net/e/e3/Enumgraph.jpg/800px-Enumgraph.jpg)
 
 ### BP Graphs: Switch on Enum
 
