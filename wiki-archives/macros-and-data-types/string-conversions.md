@@ -139,7 +139,7 @@ Enjoy!
 
 ## Authors
 
-Original author: Rama &lt;3
-Minor Authors: Kory
+Original author: Rama &lt;3  
+Minor Authors: Kory  
 Captured from the epic wiki via the Wayback Machine. Reformatted by DarioMazzanti
 
