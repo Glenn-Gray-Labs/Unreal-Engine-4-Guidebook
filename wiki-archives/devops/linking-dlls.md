@@ -444,3 +444,4 @@ You can download the final [Visual Studio Solution of the DLL](https://github.co
 - To go further with this tutorial:
     - C++ with proper class, namespace and name mangling.
     - DLL with multithreading and callback example.
+    
