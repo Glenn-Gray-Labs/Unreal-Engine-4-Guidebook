@@ -10,7 +10,7 @@
     * [Exec Functions](wiki-archives/common-pitfalls/exec-functions.md)
     * [How To Prevent Crashes Due To Dangling Actor Pointers](wiki-archives/common-pitfalls/how-to-prevent-crashes-due-to-dangling-actor-pointers.md)
     * [Profiling: How to Count CPU Cycles](wiki-archives/common-pitfalls/profiling-how-to-count-cpu-cycles.md)
-    * [Logs: Printing Messages to Yourself during Runtime](quick-reference/logs-printing-messages-to-yourself-during-runtime.md)
+    * [Logs: Printing Messages to Yourself during Runtime](wiki-archives/common-pitfalls/logs-printing-messages-to-yourself-during-runtime)
   * [Macros & Data Types](wiki-archives/macros-and-data-types/README.md)
     * [Structs, USTRUCTS\(\), They're Awesome](wiki-archives/macros-and-data-types/structs-ustructs-theyre-awesome.md)
     * [Enums For Both C++ and BP](wiki-archives/macros-and-data-types/enums-for-both-c++-and-bp.md)
