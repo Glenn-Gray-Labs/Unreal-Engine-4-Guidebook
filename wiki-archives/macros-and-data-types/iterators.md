@@ -12,9 +12,7 @@ In the UE4 engine two of the most powerful tools I use constantly are the Object
 
 You can use these functions to search for all Run-Time instances of actors and objects, or only specific classes!
 
-
 **The advantage of using the UE4 iterators is that they are always accurate!**
-
 
 You dont have to maintain dynamic arrays of actors, and then remember to remove actors when they are destroyed!
 
@@ -37,11 +35,11 @@ I was just doing this for the sake of ClientMessage and easy testing on your par
 ```cpp
 void AYourControllerClass::PrintAllObjectsNamesAndClasses()
 {
-	for ( TObjectIterator<UObject> Itr; Itr; ++Itr )
-	{
-		ClientMessage(Itr->GetName());
-		ClientMessage(Itr->GetClass()->GetDesc());
-	}
+    for ( TObjectIterator<UObject> Itr; Itr; ++Itr )
+    {
+        ClientMessage(Itr->GetName());
+        ClientMessage(Itr->GetClass()->GetDesc());
+    }
 }
 ```
 
@@ -50,12 +48,12 @@ void AYourControllerClass::PrintAllObjectsNamesAndClasses()
 ```cpp
 void AYourControllerClass::PrintAllActorsLocations()
 {
-	//EngineUtils.h
-	for (TActorIterator<AActor> ActorItr(GetWorld()); ActorItr; ++ActorItr )
-	{
-		ClientMessage(ActorItr->GetName());
-		ClientMessage(ActorItr->GetActorLocation().ToString());
-	}
+    //EngineUtils.h
+    for (TActorIterator<AActor> ActorItr(GetWorld()); ActorItr; ++ActorItr )
+    {
+        ClientMessage(ActorItr->GetName());
+        ClientMessage(ActorItr->GetActorLocation().ToString());
+    }
 }
 ```
 
@@ -110,10 +108,10 @@ This makes the iterator run faster and helps you gather only the data you really
 ```cpp
 void AYourControllerClass::PrintAllSkeletalMeshComponentsNames()
 {
-	for ( TObjectIterator<USkeletalMeshComponent> Itr; Itr; ++Itr )
-	{
-		ClientMessage(Itr->GetName());
-	}
+    for ( TObjectIterator<USkeletalMeshComponent> Itr; Itr; ++Itr )
+    {
+        ClientMessage(Itr->GetName());
+    }
 }
 ```
 
@@ -122,16 +120,14 @@ void AYourControllerClass::PrintAllSkeletalMeshComponentsNames()
 ```cpp
 void AYourControllerClass::PrintAllStaticMeshActorsLocations()
 {
-	//EngineUtils.h
-	for (TActorIterator<AStaticMeshActor> ActorItr(GetWorld()); ActorItr; ++ActorItr)
-	{
-		ClientMessage(ActorItr->GetName());
-		ClientMessage(ActorItr->GetActorLocation().ToString());
-	}
+    //EngineUtils.h
+    for (TActorIterator<AStaticMeshActor> ActorItr(GetWorld()); ActorItr; ++ActorItr)
+    {
+        ClientMessage(ActorItr->GetName());
+        ClientMessage(ActorItr->GetActorLocation().ToString());
+    }
 }
 ```
-
-### 
 
 ### Using a World-Filter with ObjectIterator
 
@@ -141,7 +137,7 @@ To filter out objects that you should not be editing at runtime, you can do a wo
 
 ```cpp
 UWorld* YourGameWorld = //set this somehow, from another UObject or pass it in as parameter
- 
+
 for(TObjectIterator<UYourObject> Itr; Itr; ++Itr)
 {
    //World Check
@@ -170,3 +166,4 @@ Enjoy!
 Original author: Rama &lt;3
 
 Ported from wiki by Firefly74940
+
