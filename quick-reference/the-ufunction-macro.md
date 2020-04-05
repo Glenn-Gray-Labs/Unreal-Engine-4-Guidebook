@@ -75,16 +75,22 @@ This function is designed to be overridden in Blueprint, but also has a native \
 * To create a native implementation of the function, you'll need to define a method named `[FunctionName]_Implementation` instead of just the function name. This is due to how the auto-generated code will include a thunk that calls the implementation method when necessary.
 * You'll need to add the `BlueprintCallable` keyword if you want to call this function from Blueprint, otherwise it's only callable via C++.
 
+{% tabs %}
+{% tab title="Example.h" %}
 ```cpp
-// Example.h
 UFUNCTION(BlueprintNativeEvent)
 void DoSomething();
+```
+{% endtab %}
 
-// Example.cpp
+{% tab title="Example.cpp" %}
+```cpp
 void Example::DoSomething_Implementation() {
     // Your code here
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 ### **BlueprintPure**
 
@@ -230,12 +236,16 @@ Declares an additional function named the same as the main function, but with `_
 
 * Required for the `Server` keyword. This was done to encourage secure server RPC functions, and to make it as easy as possible for someone to add code to check each and every parameter to be valid against all the known input constraints.
 
+{% tabs %}
+{% tab title="MyCharacter.h" %}
 ```cpp
-// MyCharacter.h
 UFUNCTION(Server, Reliable, WithValidation)
 void ServerSetSprint(bool bSprinting);
+```
+{% endtab %}
 
-// MyCharacter.cpp
+{% tab title="MyCharacter.cpp" %}
+```cpp
 void AMyCharacter::ServerSetSprint_Implementation(bool bSprinting) {
   SetSprint(bSprinting);
 }
@@ -244,6 +254,8 @@ bool AMyCharacter::ServerSetSprint_Validate(bool bSprinting) {
   return true;
 }
 ```
+{% endtab %}
+{% endtabs %}
 
 \*\*\*\*
 

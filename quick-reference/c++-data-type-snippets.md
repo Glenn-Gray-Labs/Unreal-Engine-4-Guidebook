@@ -37,7 +37,7 @@ public:
 
 ## Structs
 
-For more information about structs in Unreal, [check out this wiki article](../wiki-archives/macros-and-data-types/untitled.md).
+For more information about structs in Unreal, [check out this wiki article](../wiki-archives/macros-and-data-types/structs-ustructs-theyre-awesome.md).
 
 * To access your struct from Blueprint, make sure to add the `BlueprintType` keyword to the `USTRUCT` macro.
 * Structs must have a default constructor.
