@@ -1,7 +1,5 @@
 ---
-description: >-
-  This wiki article was written by KJZ in a [forum
-  post](https://forums.unrealengine.com/showthread.php?137352-GameplayAbilities-and-you).
+description: This wiki article was written by KJZ in a forum post.
 ---
 
 # Gameplay Abilities and You
@@ -60,13 +58,13 @@ Alright, I hope you got your Visual Studio ready already, it's time for some nit
 
 ... well, not quite, anyway. We need to tell our compiler that we want to use the GameplayAbilities module first. Go into your project's `Build.cs` file\(in my case it's `GameplayAbilitiesTut.Build.cs`\) and change this
 
-```cpp
+```csharp
 PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay" });
 ```
 
 to this
 
-```cpp
+```csharp
 PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "HeadMountedDisplay", "GameplayAbilities" });
 ```
 
@@ -418,7 +416,7 @@ With that, your first task should be complete! This example is quite barebones, 
 
 Here is an example Blueprint graph of using a `GameplayAbilityTargetActor_SingleLineTrace` to do a "hitscan"-type weapon. It fires a ray from the player's origin in the direction they're looking \(handled by the GameplayTask\). When it hits something, it reports back to the Blueprint graph. The Blueprint graph then draws a pink line based on the origin and ending points of the line trace and ends the ability.
 
-![Hitscan Weapon](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/1c9f59fcc997508eb51f94b2d1e18c3544296406/.gitbook/assets/gameplayabilitiesandyou/Hitscan_Weapon.png)
+![Hitscan Weapon](/.gitbook/assets/gameplayabilitiesandyou/Hitscan_Weapon.png)
 
 You could go farther and use the struct provided from the output of `GameplayAbilityTargetActor_SingleLineTrace` to determine which Pawn you hit \(if any\) and apply a **GameplayEffect** to it, reducing its health or applying buffs of some kind. Speaking of GameplayEffects...
 
@@ -452,7 +450,7 @@ _**This is one of the few things where effect level makes a difference**_, as th
 
 Let's make an example of perhaps the simplest use case for GameplayEffects: Cooldowns. Below, we have a very simple GameplayAbility that prints "Hello", puts itself on cooldown, then ends the ability.
 
-![Cooldown Ability](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/1c9f59fcc997508eb51f94b2d1e18c3544296406/.gitbook/assets/gameplayabilitiesandyou/CooldownAbility.png)
+![Cooldown Ability](/.gitbook/assets/gameplayabilitiesandyou/CooldownAbility.png)
 
 The part circled in blue is the GameplayEffect which signals that we are on cooldown. When this GameplayEffect is applied to us, the ability is unusable.
 
@@ -460,7 +458,7 @@ The part circled in red is the GameplayEffect that gets applied to us when we us
 
 Now we move on to the GameplayEffect itself.
 
-![Cooldown Gameplay Effect](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/1c9f59fcc997508eb51f94b2d1e18c3544296406/.gitbook/assets/gameplayabilitiesandyou/CooldownGameplayEffect.png)
+![Cooldown Gameplay Effect](/.gitbook/assets/gameplayabilitiesandyou/CooldownGameplayEffect.png)
 
 The part in red sets this to be a GameplayEffect which happens over a duration \(5 seconds in this example\). At the end of this duration, the GameplayEffect is lifted. That's all this example does; it just applies itself for 5 seconds.
 
