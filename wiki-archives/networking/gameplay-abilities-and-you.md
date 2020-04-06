@@ -34,19 +34,19 @@ With all that said, let's get started, finally.
 
 So, first of all, let us create an all-new C++ third person project, not just because I want you to properly understand the specifics of enabling the system for your own use, but also because I want to start on a clean slate so that you may not be confused by assets which you do not have on hand.
 
-![Project Creation](../../.gitbook/assets/gameplayabilities-project-creation.png)
+![Project Creation](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/58f38c224a525dc8480d25ca361411d9d3e3ff4c/.gitbook/assets/gameplayabilities-project-creation.png)
 
 This should be a fairly straightforward and obvious step to anyone that has ever created a UE4 C++ project before. I'm calling it GameplayAbilitiesTut, but you may call it as you'd like, really, as long as you pay attention and replace my project's name with yours while coding and understanding. Alright, we're here. Good old third person template, such a familiar environment, and so useful for tutorials! We want to open the plugin menu, accessed through the Settings tab.
 
-![Plugins](../../.gitbook/assets/enabling-plugins.png)
+![Plugins](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/58f38c224a525dc8480d25ca361411d9d3e3ff4c/.gitbook/assets/enabling-plugins.png)
 
 We find GameplayAbilities in the Gameplay category. Enable it. Do not be scared off by the big scary "\[UNSUPPORTED\]" in the description or the prompt that asks you if you're sure. You know darn well you're sure! You must now restart the editor to fully enable the plugin. It contains a few menus and a new blueprint type to select from the new asset-menu, but it won't load those until the next restart.
 
 After you restart, you may or may not notice a few new things: A new blueprint type called "Gameplay Ability Blueprint" when you press right-click in the content browser to create a new blueprint and a new window in the window menu called "GameplayCue Editor".
 
-![Cue Editor](../../.gitbook/assets/gameplaycue-editor.png)
+![Cue Editor](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/58f38c224a525dc8480d25ca361411d9d3e3ff4c/.gitbook/assets/gameplaycue-editor.png)
 
-![Ability Blueprint](../../.gitbook/assets/gameplayability-blueprint.png)
+![Ability Blueprint](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/58f38c224a525dc8480d25ca361411d9d3e3ff4c/.gitbook/assets/gameplayability-blueprint.png)
 
 We don't go into specifics with these just yet, but we do want to create a Gameplay Ability Blueprint, mostly because it's pretty much just a generic blueprint for abilities, and we will need one to test our AbilitySystemComponent later.
 
@@ -155,7 +155,7 @@ You may try to compile if you are unsure whether you did everything the right wa
 
 Once you have compiled, you can open your character blueprint\(which inherits from your C++ character\) and lo and behold, right under the character's movement component you should see an `AbilitySystemComponent`.
 
-![Ability System Component Added](../../.gitbook/assets/abilitysystemcomponent-added.png)
+![Ability System Component Added](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/58f38c224a525dc8480d25ca361411d9d3e3ff4c/.gitbook/assets/abilitysystemcomponent-added.png)
 
 Alright, well... what now? The blueprint menu for the component is not helpful at all, and none of the nodes you get by dragging off AbilitySystem are particularly useful, either. There's these "Try Activate Ability" nodes, but you may find out that these things don't do anything right now. That's because the ability system doesn't have any abilities to activate yet, nor does it have any inputs assigned to them, anyway, so trying to activate an ability you do not have is, obviously, a quite useless effort. We will work on fixing both things. You must do both things in C++.
 
@@ -416,7 +416,7 @@ With that, your first task should be complete! This example is quite barebones, 
 
 Here is an example Blueprint graph of using a `GameplayAbilityTargetActor_SingleLineTrace` to do a "hitscan"-type weapon. It fires a ray from the player's origin in the direction they're looking \(handled by the GameplayTask\). When it hits something, it reports back to the Blueprint graph. The Blueprint graph then draws a pink line based on the origin and ending points of the line trace and ends the ability.
 
-![Hitscan Weapon](/.gitbook/assets/gameplayabilitiesandyou/Hitscan_Weapon.png)
+![Hitscan Weapon](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/58f38c224a525dc8480d25ca361411d9d3e3ff4c/.gitbook/assets/gameplayabilitiesandyou/Hitscan_Weapon.png)
 
 You could go farther and use the struct provided from the output of `GameplayAbilityTargetActor_SingleLineTrace` to determine which Pawn you hit \(if any\) and apply a **GameplayEffect** to it, reducing its health or applying buffs of some kind. Speaking of GameplayEffects...
 
@@ -450,7 +450,7 @@ _**This is one of the few things where effect level makes a difference**_, as th
 
 Let's make an example of perhaps the simplest use case for GameplayEffects: Cooldowns. Below, we have a very simple GameplayAbility that prints "Hello", puts itself on cooldown, then ends the ability.
 
-![Cooldown Ability](/.gitbook/assets/gameplayabilitiesandyou/CooldownAbility.png)
+![Cooldown Ability](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/58f38c224a525dc8480d25ca361411d9d3e3ff4c/.gitbook/assets/gameplayabilitiesandyou/CooldownAbility.png)
 
 The part circled in blue is the GameplayEffect which signals that we are on cooldown. When this GameplayEffect is applied to us, the ability is unusable.
 
@@ -458,7 +458,7 @@ The part circled in red is the GameplayEffect that gets applied to us when we us
 
 Now we move on to the GameplayEffect itself.
 
-![Cooldown Gameplay Effect](/.gitbook/assets/gameplayabilitiesandyou/CooldownGameplayEffect.png)
+![Cooldown Gameplay Effect](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/58f38c224a525dc8480d25ca361411d9d3e3ff4c/.gitbook/assets/gameplayabilitiesandyou/CooldownGameplayEffect.png)
 
 The part in red sets this to be a GameplayEffect which happens over a duration \(5 seconds in this example\). At the end of this duration, the GameplayEffect is lifted. That's all this example does; it just applies itself for 5 seconds.
 
@@ -878,7 +878,7 @@ Way back in the Tasks section we looked at an example task called Wait for Targe
 
 When using this node, the first thing to note is that it is likely best to place before CommitAbility. This is because you can give the player the option to see what their ability is going to do before they choose to activate it. There's a couple of options for Confirmation Type, but the main two are Instant and User Confirmed. These two options are a simple way to swap between quick-casting \(Instant\), and requiring additional input to confirm and continue the ability. The class option needs to be a child of AGameplayAbilityTargetActor. We'll get to that shortly. We also have some options for a reticle, which I don't use so we won't be covering it, and a filter option. The filter will only really be relevant if you're going to be targeting actors, as opposed to targeting a location or some other thing. A good example might be an AoE spell that affects all targets within a circle - using the filter we can remove the caster from the list of targets, so that we neither highlight them during targeting nor apply effects to them later in the ability.
 
-![Wait Target Data](../../.gitbook/assets/waittargetdata.png)
+![Wait Target Data](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/58f38c224a525dc8480d25ca361411d9d3e3ff4c/.gitbook/assets/waittargetdata.png)
 
 If you've selected User Confirmed for the Confirmation Type. You'll need to either call `UAbilitySystemComponent::TargetConfirm()` or have Confirm as part of you input binds discussed earlier. You can also call `UAbilitySystemComponent::TargetCancel()` or use Cancel from the input binding if you want to give the player the option to see where they're aiming and then stop the ability from doing anything if they change their mind. This is particularly handy if creating abilities that build or place things in the world. If you're doing user confirmed remember to link the cancelled pin to EndAbility to clean things up!
 
@@ -1030,5 +1030,5 @@ Once again, this guide is taken from [a post on the forums](https://forums.unrea
 
 By default, only referenced assets are included in packaged builds, and if you've set up your GameplayCues to be triggered by tags this won't be enough. GameplayCues usually inherit from one of two base classes, so they can be added to the Asset Manager like so:
 
-![Cue Packaging](../../.gitbook/assets/cuepackaging.png)
+![Cue Packaging](https://github.com/NickGlenn/Unreal-Engine-4-Community-Guide/tree/58f38c224a525dc8480d25ca361411d9d3e3ff4c/.gitbook/assets/cuepackaging.png)
 
