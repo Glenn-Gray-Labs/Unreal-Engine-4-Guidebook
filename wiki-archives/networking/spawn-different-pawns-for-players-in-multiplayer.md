@@ -133,6 +133,8 @@ void AMyPlayerController::DeterminePawnClass_Implementation()
 		/* Load Text File Into String Array */
 		TArray<FString> TextStrings;
 		const FString FilePath = FPaths::GameDir() + "Textfiles/PlayerSettings.txt";
+		//	4.26	const FString FilePath = FPaths::ProjectDir() + "Textfiles/PlayerSettings.txt";
+		FFileHelper::LoadFileToStringArray(TextStrings, *FilePath);
  
 	        /* Use PawnA if the Text File tells us to */
 		if (TextStrings[0]== "PawnA")
